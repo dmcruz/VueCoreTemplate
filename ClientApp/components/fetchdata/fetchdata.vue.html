@@ -24,6 +24,9 @@
         </table>
 
         <p v-else><em>Loading...</em></p>
+
+        <h2 v-if="userName">Online user: {{ userName }}</h2>
+        <h2 v-else>Offline</h2>
     </div>
 </template>
 

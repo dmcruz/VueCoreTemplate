@@ -66,6 +66,13 @@ namespace VueCore
 
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("https://localhost:5001")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+            });
 
             app.UseMvc(routes =>
             {
