@@ -9,15 +9,32 @@ const actions: ActionTree<any, any> = {
         console.log('actions: login');
         VueCoreService.login(credentials)
             .then((res) => {
-                console.log('actions: login 200');
+                console.log('actions/login commit');
                 commit('SET_USER_DATA', res.data);
             }).catch((e) => {
-                console.log('actions: login error');
-                console.error(e.response as string);
+                console.error('actions/login error: ' + e.response as string);
             });
     },
     logout({ commit }) {
-        commit('LOGOUT')
+        VueCoreService.logout()
+            .then((res) => {
+                console.log('actions/logout commit');
+                commit('LOGOUT');
+            }).catch((e) => {
+                commit('LOGOUT');
+                console.error('actions/logout error: ' + e.response as string);
+            })
+    },
+    getUser({ commit, dispatch }) {
+        VueCoreService.getUser()
+            .then((res) => {
+                console.log('actions/getUser commit');
+                commit('SET_USER_DATA', res.data);
+            }).catch((e) => {
+                if (e.response.status == 401)
+                    dispatch('logout');
+                console.error('actions/getUser error: ' + e.response as string);
+            })
     }
 
 }

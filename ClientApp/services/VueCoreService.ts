@@ -3,7 +3,7 @@ import LoginCreds from '../types/LoginCreds';
 
 const apiClient = axios.create({
     baseURL: `http://localhost:5000`,
-    withCredentials: false,
+    withCredentials: true,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -12,6 +12,12 @@ const apiClient = axios.create({
 export default {
     login(creds: LoginCreds) {
         return apiClient.post('/api/account/login', creds);
+    },
+    logout() {
+        return apiClient.post('/api/account/logout');
+    },
+    getUser() {
+        return apiClient.get('api/account/user');
     }
 
 }

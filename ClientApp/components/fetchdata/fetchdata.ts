@@ -17,6 +17,10 @@ export default class FetchDataComponent extends Vue {
         return this.$store.state.user ? this.$store.state.user.name : null ;
     }
 
+    created() {
+        console.log('fetchData: getuser')
+        this.$store.dispatch('getUser');
+    }
     mounted() {
         fetch('api/SampleData/WeatherForecasts')
             .then(response => response.json() as Promise<WeatherForecast[]>)

@@ -26,7 +26,7 @@ namespace VueCore.Controllers
                 UserInfo userInfo = new UserInfo
                 {
                     Username = creds.Username,
-                    Name = "Donut"
+                    Name = creds.Username == "dmcruz" ? "Donut" : creds.Username.ToUpper()
                 };
 
                 string authScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -99,7 +99,7 @@ namespace VueCore.Controllers
 
         private bool ValidateUser(LoginCreds creds)
         {
-            if (creds.Username == "dmcruz")
+            if (creds.Username == "dmcruz" || creds.Username == "aaa")
                 return true;
             return false;
         }
