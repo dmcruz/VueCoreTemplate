@@ -7,7 +7,7 @@
         
             <p>Password: <input type="password" v-model="loginData.password" /></p>
 
-            <button @click="doLogin">Login</button>
+            <button @click="doLogin"><i class="fa fa-circle-o-notch fa-spin" v-if="isLoading"> </i>Login</button>
         </div>
         <div v-else>
             <h1>Logout</h1>

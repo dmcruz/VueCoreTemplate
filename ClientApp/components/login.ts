@@ -11,9 +11,15 @@ export default class LoginComponent extends Vue {
         username: '',
         password: ''
     };
+    isLoading: boolean = false;
 
     doLogin() {
-        this.$store.dispatch('login', this.loginData);
+        this.isLoading = true;
+        var thislogin = this;
+        setTimeout(function () {
+            thislogin.$store.dispatch('login', this.loginData);
+            thislogin.isLoading = false;
+        }, 3000);
 
     }
 
