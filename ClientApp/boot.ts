@@ -3,7 +3,11 @@ import 'bootstrap';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store'
+import Vuelidate from 'vuelidate'
+import "./components/registerComponentHooks"
+
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 const routes = [
     { path: '/', component: require('./components/home/home.vue.html') },

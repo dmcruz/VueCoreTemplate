@@ -26,6 +26,7 @@
     <Folder Include="ClientApp\types\" />
     <Folder Include="ClientApp\typings\" />
     <Folder Include="ClientApp\store\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ClientApp\components\login.ts" />
@@ -37,6 +38,7 @@
     <None Remove="ClientApp\store\index.ts" />
     <None Remove="ClientApp\store\mutations.ts" />
     <None Remove="ClientApp\store\actions.ts" />
+    <None Remove="ClientApp\components\registerComponentHooks.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\login.ts" />
@@ -45,6 +47,7 @@
     <TypeScriptCompile Include="ClientApp\store\index.ts" />
     <TypeScriptCompile Include="ClientApp\store\mutations.ts" />
     <TypeScriptCompile Include="ClientApp\store\actions.ts" />
+    <TypeScriptCompile Include="ClientApp\components\registerComponentHooks.ts" />
   </ItemGroup>
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->

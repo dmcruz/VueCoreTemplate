@@ -3,7 +3,16 @@
         <div v-if="$store.state.user == null">
             <h1>Login</h1>
 
-            <p>Username: <input type="text" v-model="loginData.username" /></p>
+            <div class="form-group" :class="{ 'form-group--error': $v.loginData.username.$error }">
+                <label class="form__label">Username</label>
+                <br/>
+                <input type="text" v-model="loginData.username" />
+                <div class="invalid-feedback" v-if="!$v.$valid && !$v.loginData.username.minLength">
+                  Invalid username.
+                </div>
+            </div>
+
+            <p class="alert alert-danger" v-if="$v.loginData.username.isDirty && !$v.loginData.username.required">Username is required</p>
         
             <p>Password: <input type="password" v-model="loginData.password" /></p>
 
@@ -13,7 +22,24 @@
             <h1>Logout</h1>
             <button @click="doLogout">Logout</button>
         </div>
+
+        <div class="form-group">
+            <label class="form__label">Validation status:</label>
+            <ul class="list__ul">   
+                <li v-if="!$v.$valid && !$v.loginData.username.minLength">Username: <kbd>minlength(6)</kbd>.</li>
+                <li v-if="!$v.$valid && !$v.loginData.username.required">Username: <kbd>required</kbd>.</li>
+            </ul>
+        </div>
+
+        <example></example>
     </div>
 </template>
 
 <script src="./login.ts"></script>
+
+<style scoped>
+    .invalid-feedback {
+        color: red;
+        font-size: xx-small;
+    }
+</style>
